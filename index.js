@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dot.addEventListener('click', () => {
       currentIndex = index;
       updateSlider();
+      resetAutoSlide();
     });
     dotsContainer.appendChild(dot);
   });
@@ -24,17 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const dots = document.querySelectorAll('.dot');
 
   function updateSlider() {
-    // Update slides
     slides.forEach((slide, i) => {
       slide.classList.toggle('active', i === currentIndex);
     });
 
-    // Update dots
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === currentIndex);
     });
 
-    // Update slide counter
     counter.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
   }
 
@@ -56,15 +54,25 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(autoSlideInterval);
   }
 
-  // Event listeners
-  nextBtn.addEventListener('click', nextSlide);
-  prevBtn.addEventListener('click', prevSlide);
+  function resetAutoSlide() {
+    stopAutoSlide();
+    startAutoSlide();
+  }
 
-  // Pause on hover
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetAutoSlide();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();
+  });
+
   slider.addEventListener('mouseenter', stopAutoSlide);
   slider.addEventListener('mouseleave', startAutoSlide);
 
-  // Init
+  // Initialize
   updateSlider();
   startAutoSlide();
 });
