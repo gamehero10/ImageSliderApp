@@ -60,7 +60,7 @@ button:hover {
 /* Navigation dots */
 .dots {
   position: absolute;
-  bottom: 15px;
+  bottom: 25px;
   width: 100%;
   text-align: center;
 }
@@ -78,4 +78,15 @@ button:hover {
 
 .dot.active {
   background-color: #717171;
+}
+
+/* Slide counter */
+.counter {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
 }

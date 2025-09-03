@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('prev');
   const nextBtn = document.getElementById('next');
   const dotsContainer = document.getElementById('dots-container');
+  const counter = document.getElementById('slide-counter');
   let currentIndex = 0;
 
   // Create navigation dots
@@ -29,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === currentIndex);
     });
+
+    // Update slide counter
+    counter.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
   }
 
   function nextSlide() {
