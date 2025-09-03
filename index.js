@@ -72,7 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
   slider.addEventListener('mouseenter', stopAutoSlide);
   slider.addEventListener('mouseleave', startAutoSlide);
 
+  // Keyboard navigation
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      nextSlide();
+      resetAutoSlide();
+    } else if (e.key === 'ArrowLeft') {
+      prevSlide();
+      resetAutoSlide();
+    }
+  });
+
   // Initialize
   updateSlider();
   startAutoSlide();
+
+  // Focus slider to enable keyboard navigation immediately if desired
+  slider.focus();
 });
