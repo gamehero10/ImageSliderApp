@@ -1,2 +1,2 @@
 # ImageSliderApp
-This is an image slider app. It will include several different features that will be added in the future. 
+This is an image slider app. Added a new feature which are navigation dots.  
