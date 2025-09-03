@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('next');
   const dotsContainer = document.getElementById('dots-container');
   const counter = document.getElementById('slide-counter');
+  const slider = document.getElementById('slider');
+
   let currentIndex = 0;
+  let autoSlideInterval;
 
   // Create navigation dots
   slides.forEach((_, index) => {
@@ -45,9 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlider();
   }
 
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  // Event listeners
   nextBtn.addEventListener('click', nextSlide);
   prevBtn.addEventListener('click', prevSlide);
 
-  // Optional: auto-slide every 5 seconds
-  setInterval(nextSlide, 5000);
+  // Pause on hover
+  slider.addEventListener('mouseenter', stopAutoSlide);
+  slider.addEventListener('mouseleave', startAutoSlide);
+
+  // Init
+  updateSlider();
+  startAutoSlide();
 });
