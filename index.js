@@ -24,13 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dots = document.querySelectorAll('.dot');
 
+  // ✅ Optimized updateSlider
   function updateSlider() {
     slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === currentIndex);
-    });
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
+      const isActive = i === currentIndex;
+      slide.classList.toggle('active', isActive);
+      dots[i].classList.toggle('active', isActive);
     });
 
     counter.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
@@ -69,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resetAutoSlide();
   });
 
-  // Pause on hover
   slider.addEventListener('mouseenter', stopAutoSlide);
   slider.addEventListener('mouseleave', startAutoSlide);
 
@@ -109,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initialize
+  // Init
   updateSlider();
   startAutoSlide();
   slider.focus();

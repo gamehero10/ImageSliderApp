@@ -110,7 +110,6 @@ button:hover {
   z-index: 2;
 }
 
-/* Responsive Typography (Optional) */
 @media (max-width: 600px) {
   button {
     font-size: 1.5rem;
