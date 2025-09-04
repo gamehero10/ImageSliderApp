@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleSwipeGesture() {
     const swipeDistance = touchEndX - touchStartX;
-    const threshold = 50; // Minimum swipe distance in px
+    const threshold = 50;
     if (swipeDistance > threshold) {
       prevSlide();
       resetAutoSlide();
@@ -112,5 +112,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize
   updateSlider();
   startAutoSlide();
-  slider.focus(); // enable keyboard navigation immediately
+  slider.focus();
 });
