@@ -16,12 +16,13 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   background: #000;
-  outline: none; /* remove default focus outline */
+  outline: none;
 }
 
 .slides {
   position: relative;
   height: 100%;
+  touch-action: pan-y; /* prevent vertical scrolling from being blocked */
 }
 
 .slide {
@@ -67,7 +68,7 @@ button:hover {
   background: rgba(0, 0, 0, 0.7);
 }
 
-/* Navigation dots */
+/* Dots */
 .dots {
   position: absolute;
   bottom: 25px;

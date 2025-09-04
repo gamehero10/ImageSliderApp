@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
   let autoSlideInterval;
 
-  // Create navigation dots
+  // Create dots
   slides.forEach((_, index) => {
     const dot = document.createElement('span');
     dot.classList.add('dot');
@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resetAutoSlide();
   });
 
+  // Pause on hover
   slider.addEventListener('mouseenter', stopAutoSlide);
   slider.addEventListener('mouseleave', startAutoSlide);
 
@@ -83,10 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  slider.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipeGesture();
+  });
+
+  function handleSwipeGesture() {
+    const swipeDistance = touchEndX - touchStartX;
+    const threshold = 50; // Minimum swipe distance in px
+    if (swipeDistance > threshold) {
+      prevSlide();
+      resetAutoSlide();
+    } else if (swipeDistance < -threshold) {
+      nextSlide();
+      resetAutoSlide();
+    }
+  }
+
   // Initialize
   updateSlider();
   startAutoSlide();
-
-  // Focus slider to enable keyboard navigation immediately if desired
-  slider.focus();
+  slider.focus(); // enable keyboard navigation immediately
 });
